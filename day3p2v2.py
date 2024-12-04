@@ -13,21 +13,21 @@ matches = re.findall(pattern, lines)
 
 total = 0
 
-mulon = True
+mul_is_on = True
 
-for blob in matches:
-    if blob.startswith('mul'):
-        if mulon:
-            blob = blob.replace('mul(', '')
-            blob = blob.replace(')', '')
-            blob = blob.replace(',', ' ')
-            tup = blob.split()
+for match in matches:
+    if match.startswith('mul'):
+        if mul_is_on:
+            match = match.replace('mul(', '')
+            match = match.replace(')', '')
+            match = match.replace(',', ' ')
+            tup = match.split()
             total += int(tup[0]) * int(tup[1] )
         
-    elif blob.startswith('don'):
-        mulon = False
-    elif blob.startswith('do()'):
-        mulon = True
+    elif match.startswith('don'):
+        mul_is_on = False
+    elif match.startswith('do()'):
+        mul_is_on = True
     
 
 print(total)
